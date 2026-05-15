@@ -1,31 +1,37 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
-export async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(options?.headers || {}),
-    },
-  });
-
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status}`);
-  }
-
-  return res.json();
-}
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://127.0.0.1:8000";
 
 export const api = {
-  getProjects: () => apiFetch<any[]>("/projects"),
-  askAI: (question: string) =>
-    apiFetch<{ answer: string }>("/chat", {
+  async askAI(question: string) {
+    const res = await fetch(`${API_URL}/chat`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ question }),
-    }),
-  sendContact: (payload: { name: string; email: string; message: string }) =>
-    apiFetch<any>("/contact", {
+    });
+
+    if (!res.ok) {
+      throw new Error("API Error");
+    }
+
+    return res.json();
+  },
+
+  async sendContact(data: {
+    name: string;
+    email: string;
+    message: string;
+  }) {
+    const res = await fetch(`${API_URL}/contact`, {
       method: "POST",
-      body: JSON.stringify(payload),
-    }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    return res.json();
+  },
 };

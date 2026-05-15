@@ -20,8 +20,9 @@ export default function AIChat() {
     try {
       const data = await api.askAI(question);
       setAnswer(data.answer || "No answer returned from API.");
-    } catch {
-      setAnswer("Backend is not connected yet. Make sure FastAPI is running on http://localhost:8000.");
+    } catch (error) {
+      console.error("AI CHAT ERROR:", error);
+      setAnswer("AI chat error. Check browser console.");
     } finally {
       setLoading(false);
     }
