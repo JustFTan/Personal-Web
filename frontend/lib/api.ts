@@ -15,7 +15,8 @@ export const api = {
     });
 
     if (!res.ok) {
-      throw new Error("API Error");
+      const errorText = await res.text();
+      throw new Error(errorText);
     }
 
     return res.json();

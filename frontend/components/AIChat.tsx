@@ -22,7 +22,7 @@ export default function AIChat() {
       setAnswer(data.answer || "No answer returned from API.");
     } catch (error) {
       console.error("AI CHAT ERROR:", error);
-      setAnswer("AI chat error. Check browser console.");
+      setAnswer(String(error));
     } finally {
       setLoading(false);
     }
