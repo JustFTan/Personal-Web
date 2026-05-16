@@ -56,6 +56,13 @@ const publications = [
   },
 ];
 
+const fadeUp = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.7 },
+  viewport: { once: true },
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -65,9 +72,9 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#e0f2fe,transparent_35%),radial-gradient(circle_at_bottom_right,#f1f5f9,transparent_30%)]" />
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={fadeUp.initial}
+          animate={fadeUp.whileInView}
+          transition={fadeUp.transition}
           className="mx-auto max-w-5xl text-center"
         >
           <p className="mx-auto mb-6 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
@@ -95,7 +102,7 @@ export default function Home() {
       </section>
 
       <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8" id="about">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+        <motion.div {...fadeUp} className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
           
           <div className="relative mx-auto max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm">
@@ -148,11 +155,11 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="px-4 py-16 sm:px-6 lg:px-8" id="projects">
-        <div className="mx-auto max-w-7xl">
+        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               Portfolio
@@ -204,11 +211,11 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8" id="publications">
-        <div className="mx-auto max-w-7xl">
+        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               Research
@@ -242,11 +249,11 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="px-4 py-16 sm:px-6 lg:px-8" id="assistant">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <motion.div {...fadeUp} className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               AI Assistant
@@ -261,11 +268,11 @@ export default function Home() {
           </div>
 
           <AIChat />
-        </div>
+        </motion.div>
       </section>
 
       <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8" id="connect">
-        <div className="mx-auto max-w-7xl">
+        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               Connect
@@ -341,11 +348,11 @@ export default function Home() {
               </div>
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="bg-slate-950 px-4 py-16 text-white sm:px-6 lg:px-8" id="contact">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <motion.div {...fadeUp} className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-400">
               Hire Me
@@ -360,7 +367,7 @@ export default function Home() {
           </div>
 
           <ContactForm />
-        </div>
+        </motion.div>
       </section>
     </main>
   );
