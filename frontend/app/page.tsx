@@ -94,7 +94,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8" id="about">
+      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8" id="about">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
           
           <div className="relative mx-auto max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
